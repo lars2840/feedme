@@ -38,6 +38,8 @@
               
               function creatHtml () {
                 console.log("createHtml function fired");
+                
+                
               }
               
               function getData () {
@@ -45,10 +47,11 @@
                 type: 'GET',
                 url: "https://api.instagram.com/v1/users/self/feed?access_token=" + myToken,
                 dataType: 'jsnop',
-                success: function(data) {
+                success: function(json) {
                   console.log("Data has been logged from instagram");
-                  console.log(data);
-                  createHtml(data)
+                  var allPhotos = json.data;
+                  console.log(allPhotos);
+                  createHtml(allPhotos)
                 },
                 error: function(error) {
                   console.log(error);
